@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВПР Тренажер - Литературное чтение 4 класс</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/sn-pro@latest/index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>📚 ВПР Тренажер</h1>
+                <p>Литературное чтение • 4 класс</p>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#tasks" class="nav-link">Задания</a>
+                <a href="#progress" class="nav-link">Прогресс</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section id="home" class="section active">
+                <div class="welcome">
+                    <div>
+                        <h2>Добро пожаловать в тренажер ВПР!</h2>
+                        <p>Подготовься к Всероссийской проверочной работе по литературному чтению</p>
+                        <button class="start-btn" onclick="showSection('tasks')">Начать обучение</button>
+                    </div>
+                    <div class="features">
+                        <div class="feature-card">
+                            <div class="feature-icon">📖</div>
+                            <h3>Литературное чтение</h3>
+                            <p>Изучай произведения и развивай навыки чтения</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Интерактивные задания</h3>
+                            <p>Практикуйся с различными типами вопросов</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Отслеживание прогресса</h3>
+                            <p>Следи за своими успехами и улучшениями</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <section id="tasks" class="section">
+            <h2>Предметы</h2>
+                <div class="task-categories">
+
+                    <div class="category-card" onclick="showTaskCategory('literature')">
+                        <div class="category-icon">📚</div>
+                        <h3>Литературное чтение</h3>
+                        <p>Подготовка к ВПР</p>
+                    </div>
+                </div>
+
+
+
+                <div id="literature-tasks" class="task-section" style="display: none;">
+                    <h3>Литературное чтение</h3>
+                    <p class="sequential-hint">Пока вы не решите одно задание, вы не перейдёте к следующему и не увидите его.</p>
+                    <p class="task-counter" id="literature-task-counter">Задание 1 из 6</p>
+                    
+                    <div class="task-card" data-task-index="1">
+                        <h4>Задание 1: Понимание текста</h4>
+                        <p>Прочитай отрывок и ответь на вопрос:</p>
+                        <div class="text-passage">
+                            <p><em>"В лесу стояла тишина. Только где-то вдалеке слышался шум ручья. Солнце пробивалось сквозь листву деревьев, создавая причудливые узоры на земле."</em></p>
+                        </div>
+                        <p><strong>Вопрос:</strong> Какое время суток описывается в тексте?</p>
+                        <div class="answer-options">
+                            <button class="option-btn" onclick="checkAnswer(this, 'День', 'literature')">Ночь</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'День', 'literature')">День</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'День', 'literature')">Вечер</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'День', 'literature')">Утро</button>
+                        </div>
+                        <div class="result" id="literature-result"></div>
+                    </div>
+
+                    <div class="task-card" data-task-index="2">
+                        <h4>Задание 2: Соедини картинки с писателем</h4>
+                        <p>Соедини портреты писателей с их именами:</p>
+                        
+                        <div class="matching-game">
+                            <div class="images-grid">
+                                <div class="image-item" data-writer="Пушкин">
+                                    <img src="Images/1.png" alt="Писатель 1" class="writer-image">
+                                    <div class="image-number">1</div>
+                                </div>
+                                <div class="image-item" data-writer="Толстой">
+                                    <img src="Images/2.png" alt="Писатель 2" class="writer-image">
+                                    <div class="image-number">2</div>
+                                </div>
+                                <div class="image-item" data-writer="Чехов">
+                                    <img src="Images/3.png" alt="Писатель 3" class="writer-image">
+                                    <div class="image-number">3</div>
+                                </div>
+                                <div class="image-item" data-writer="Гоголь">
+                                    <img src="Images/4.png" alt="Писатель 4" class="writer-image">
+                                    <div class="image-number">4</div>
+                                </div>
+                            </div>
+                            
+                            <div class="writers-list">
+                                <div class="writer-option" data-writer="Пушкин">К. Г. Паустовский</div>
+                                <div class="writer-option" data-writer="Толстой">М. Ю. Лермонтов</div>
+                                <div class="writer-option" data-writer="Чехов">А. С. Пушкин</div>
+                                <div class="writer-option" data-writer="Гоголь">А. А. Фет</div>
+                            </div>
+                            
+                            <!-- Слой для линий соединения -->
+                            <svg id="connections-svg" class="connection-layer" xmlns="http://www.w3.org/2000/svg"></svg>
+                        </div>
+                        
+                        <div class="matching-result" id="matching-result"></div>
+                        <button class="check-matching-btn" onclick="checkMatching(this)">Проверить ответы</button>
+                    </div>
+
+                    <div class="task-card" data-task-index="3">
+                        <h4>Задание 3: Понимание прочитанного</h4>
+                        <p>Прочитай текст и ответь на вопросы:</p>
+                        
+                        <div class="text-passage">
+                            <p><strong>Отрывок из сказки "Снежная королева"</strong></p>
+                            <p><em>"Кая и Герда были лучшими друзьями. Они жили в соседних домах и играли вместе каждый день. Однажды злой тролль разбил волшебное зеркало, и осколки попали в глаза Кая. С тех пор его сердце стало холодным, как лёд."</em></p>
+                        </div>
+                        
+                        <div class="question-block">
+                            <p><strong>Вопрос 1:</strong> Кто были лучшими друзьями?</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, 'Кая и Герда', 'literature2')">Кая и Герда</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Кая и Герда', 'literature2')">Кая и тролль</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Кая и Герда', 'literature2')">Герда и тролль</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Кая и Герда', 'literature2')">Тролль и зеркало</button>
+                            </div>
+                            <div class="result" id="literature2-result"></div>
+                        </div>
+                        
+                        <div class="question-block">
+                            <p><strong>Вопрос 2:</strong> Что случилось с сердцем Кая?</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, 'Стало холодным как лёд', 'literature3')">Стало холодным как лёд</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Стало холодным как лёд', 'literature3')">Стало горячим как огонь</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Стало холодным как лёд', 'literature3')">Осталось прежним</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Стало холодным как лёд', 'literature3')">Стало мягким как воск</button>
+                            </div>
+                            <div class="result" id="literature3-result"></div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительные задания -->
+                    <div class="task-card" data-task-index="4">
+                        <h4>Задание 4: Выбор ответа</h4>
+                        <p>Прочитай и выбери правильный ответ:</p>
+                        <div class="text-passage">
+                            <p><em>"Снежинки медленно опускались на землю, укрывая всё вокруг белым покрывалом."</em></p>
+                        </div>
+                        <p><strong>Вопрос:</strong> Какое время года описано?</p>
+                        <div class="answer-options">
+                            <button class="option-btn" onclick="checkAnswer(this, 'Зима', 'literatureA')">Весна</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'Зима', 'literatureA')">Лето</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'Зима', 'literatureA')">Осень</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'Зима', 'literatureA')">Зима</button>
+                        </div>
+                        <div class="result" id="literatureA-result"></div>
+                    </div>
+
+                    <div class="task-card" data-task-index="5">
+                        <h4>Задание 5: Соответствие портретов и имён</h4>
+                        <p>Соедини портреты писателей с их именами:</p>
+                        <div class="matching-game">
+                            <div class="images-grid">
+                                <div class="image-item" data-writer="Крылов">
+                                    <img src="Images/5.png" alt="Писатель 5" class="writer-image">
+                                    <div class="image-number">1</div>
+                                </div>
+                                <div class="image-item" data-writer="Некрасов">
+                                    <img src="Images/6.png" alt="Писатель 6" class="writer-image">
+                                    <div class="image-number">2</div>
+                                </div>
+                                <div class="image-item" data-writer="Толстой">
+                                    <img src="Images/7.png" alt="Писатель 7" class="writer-image">
+                                    <div class="image-number">3</div>
+                                </div>
+                                <div class="image-item" data-writer="Тургенев">
+                                    <img src="Images/8.png" alt="Писатель 8" class="writer-image">
+                                    <div class="image-number">4</div>
+                                </div>
+                            </div>
+                            <div class="writers-list">
+                                <div class="writer-option" data-writer="Крылов">И. А. Крылов</div>
+                                <div class="writer-option" data-writer="Некрасов">Н. А. Некрасов</div>
+                                <div class="writer-option" data-writer="Толстой">Л. Н. Толстой</div>
+                                <div class="writer-option" data-writer="Тургенев">И. С. Тургенев</div>
+                            </div>
+                            <svg class="connection-layer" xmlns="http://www.w3.org/2000/svg"></svg>
+                        </div>
+                        <div class="matching-result" id="matching-result-2"></div>
+                        <button class="check-matching-btn" onclick="checkMatching(this)">Проверить ответы</button>
+                    </div>
+
+                    <div class="task-card" data-task-index="6">
+                        <h4>Задание 6: Понимание прочитанного</h4>
+                        <p>Прочитай текст и ответь на вопрос:</p>
+                        <div class="text-passage">
+                            <p><strong>Отрывок</strong></p>
+                            <p><em>"Лёгкий ветерок колыхал верхушки деревьев. На лугу звенели кузнечики, а где-то неподалёку куковала кукушка."</em></p>
+                        </div>
+                        <div class="question-block">
+                            <p><strong>Вопрос:</strong> Какое природное явление упоминается в тексте?</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, 'Ветер', 'literatureB')">Гроза</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Ветер', 'literatureB')">Снегопад</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Ветер', 'literatureB')">Ветер</button>
+                                <button class="option-btn" onclick="checkAnswer(this, 'Ветер', 'literatureB')">Туман</button>
+                            </div>
+                            <div class="result" id="literatureB-result"></div>
+                        </div>
+                    </div>
+                </div>
+                
+        </section>
+        </div>
+
+        <section id="progress" class="section">
+            <h2>Ваш прогресс</h2>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="completed-tasks">0</div>
+                        <div class="stat-label">Выполнено заданий</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="correct-answers">0</div>
+                        <div class="stat-label">Правильных ответов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="accuracy">0%</div>
+                        <div class="stat-label">Точность</div>
+                    </div>
+                </div>
+                <div class="progress-chart">
+                    <h3>Статистика по предметам</h3>
+                    <div class="subject-progress">
+                        <div class="subject-item">
+                            <span>Литературное чтение</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="literature-progress" style="width: 0%"></div>
+                            </div>
+                            <span id="literature-percentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <!-- Экран поздравления после прохождения всех заданий -->
+    <div id="congratulations-overlay" class="congratulations-overlay" style="display: none;">
+        <div class="congratulations-card">
+            <div class="congratulations-icon">🎉</div>
+            <h2>Поздравляем!</h2>
+            <p>Все задания выполнены. Вы отлично справились!</p>
+            <button type="button" class="congratulations-btn" onclick="resetProgressAndCloseCongratulations()">Пройти заново</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Сделано учеником 4В класса Фадеевым Романом.</p>
+            <p>&copy; Сделано с книгой "ВПР 4 класс С. В. Демченко"</p>
+            <p>Исходный код доступен на <a href="https://github.com/romdev1/VPR" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
