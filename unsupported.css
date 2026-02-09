@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.warning-card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.warning-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+h1 {
+    font-family: 'Unbounded', sans-serif;
+    color: #f56565;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.message {
+    background: #fff5f5;
+    border: 2px solid #fed7d7;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.message p {
+    color: #742a2a;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.solutions {
+    margin-bottom: 30px;
+}
+
+h2, h3 {
+    font-family: 'Unbounded', sans-serif;
+    color: #2d3748;
+    margin-bottom: 20px;
+}
+
+.solutions h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.solution-card {
+    background: #f7fafc;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.solution-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.solution-card h3 {
+    color: #4a5568;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.solution-card p {
+    color: #718096;
+    font-size: 14px;
+}
+
+.instructions {
+    background: #ebf8ff;
+    border: 2px solid #bee3f8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.instructions h3 {
+    text-align: center;
+    color: #2c5282;
+}
+
+.instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.instructions li {
+    padding: 10px 0;
+    border-bottom: 1px solid #bee3f8;
+    color: #2d3748;
+    font-size: 15px;
+}
+
+.instructions li:last-child {
+    border-bottom: none;
+}
+
+.instructions strong {
+    color: #2c5282;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.secondary-btn {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.secondary-btn:hover {
+    background: #cbd5e0;
+    transform: translateY(-2px);
+}
+
+.contact {
+    color: #718096;
+    font-size: 14px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Адаптивность для самого сообщения */
+@media (max-width: 480px) {
+    .warning-card {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .warning-icon {
+        font-size: 60px;
+    }
+    
+    .primary-btn, .secondary-btn {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+}

@@ -8,6 +8,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/sn-pro@latest/index.css">
 </head>
+<script>
+    // Проверка при загрузке основной страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        // Если пользователь уже игнорировал предупреждение - пропускаем
+        if (localStorage.getItem('ignorePhoneWarning') === 'true') {
+            return;
+        }
+        
+        // Функция определения телефона
+        function isPhone() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isPhone = /android.*mobile|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+            const isSmallScreen = window.innerWidth <= 480;
+            return isPhone && isSmallScreen;
+        }
+        
+        // Если это телефон - перенаправляем
+        if (isPhone()) {
+            window.location.href = 'unsupported.html';
+        }
+    });
+</script>
 <body>
     <header class="header">
         <div class="container">
