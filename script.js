@@ -17,6 +17,8 @@ let literatureGCorrect = false;
 let literatureHCorrect = false;
 // Ответы в заданиях на соответствие по номерам заданий (2 и 5)
 let matchingAnswersByTask = { 2: {}, 5: {} };
+// Время начала прохождения (в миллисекундах от эпохи)
+let startTimeMs = null;
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
@@ -289,6 +291,8 @@ function shuffleAnswerOptions(container) {
 
 // Проверка ответа
 function checkAnswer(button, correctAnswer, subject) {
+    // Стартуем таймер при первом действии
+    ensureStartTime();
     const userAnswer = button.textContent.trim();
     const isCorrect = userAnswer === correctAnswer;
     
@@ -490,7 +494,8 @@ function saveProgress() {
         literatureProgress,
         literature2Progress,
         literature3Progress,
-        lastUnlockedLiteratureTask
+        lastUnlockedLiteratureTask,
+        startTimeMs
     };
     
     localStorage.setItem('vpr-progress', JSON.stringify(progress));
@@ -508,6 +513,7 @@ function loadProgress() {
         literature2Progress = progress.literature2Progress || 0;
         literature3Progress = progress.literature3Progress || 0;
         lastUnlockedLiteratureTask = Math.max(1, parseInt(progress.lastUnlockedLiteratureTask, 10) || 1);
+        startTimeMs = typeof progress.startTimeMs === 'number' ? progress.startTimeMs : null;
     }
 }
 
@@ -552,6 +558,14 @@ function retryTask(subject) {
                 btn.classList.remove('correct', 'incorrect');
             });
         }
+    }
+}
+
+// Зафиксировать время начала прохождения (при первом действии в заданиях)
+function ensureStartTime() {
+    if (startTimeMs === null) {
+        startTimeMs = Date.now();
+        saveProgress();
     }
 }
 
@@ -601,6 +615,7 @@ function resetProgress() {
     literature3Correct = false;
     matchingAnswersByTask = { 2: {}, 5: {} };
     matchingAnswers = {};
+    startTimeMs = null;
     
     // Очищаем localStorage
     localStorage.removeItem('vpr-progress');
@@ -655,7 +670,22 @@ function resetProgress() {
 // Показать экран «Все задания выполнены»
 function showCongratulationsScreen() {
     const overlay = document.getElementById('congratulations-overlay');
-    if (overlay) overlay.style.display = 'flex';
+    if (overlay) {
+        // Обновляем время прохождения
+        const timeEl = document.getElementById('total-time');
+        if (timeEl && startTimeMs) {
+            const totalMs = Date.now() - startTimeMs;
+            const totalSeconds = Math.max(0, Math.floor(totalMs / 1000));
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            if (minutes > 0) {
+                timeEl.textContent = `${minutes} мин ${seconds.toString().padStart(2, '0')} с`;
+            } else {
+                timeEl.textContent = `${seconds} с`;
+            }
+        }
+        overlay.style.display = 'flex';
+    }
 }
 
 // Скрыть экран поздравления
@@ -1170,6 +1200,8 @@ function renderConnections(animateLast = false, taskIndex = null) {
 // Проверка ответов в задании "Соедини картинки с писателем"
 // btn — кнопка «Проверить», по ней определяется номер задания (2 или 5)
 function checkMatching(btn) {
+    // Стартуем таймер при первом действии
+    ensureStartTime();
     const taskCard = btn && btn.closest ? btn.closest('.task-card[data-task-index]') : null;
     const taskIndex = taskCard ? parseInt(taskCard.getAttribute('data-task-index'), 10) : 2;
     const gameContainer = taskCard ? taskCard.querySelector('.matching-game') : document.querySelector('#literature-tasks .matching-game');
