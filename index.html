@@ -90,7 +90,7 @@
                 <div id="literature-tasks" class="task-section" style="display: none;">
                     <h3>Литературное чтение</h3>
                     <p class="sequential-hint">Пока вы не решите одно задание, вы не перейдёте к следующему и не увидите его.</p>
-                    <p class="task-counter" id="literature-task-counter">Задание 1 из 6</p>
+                    <p class="task-counter" id="literature-task-counter">Задание 1 из 9</p>
                     
                     <div class="task-card" data-task-index="1">
                         <h4>Задание 1: Понимание текста</h4>
@@ -246,6 +246,88 @@
                                 <button class="option-btn" onclick="checkAnswer(this, 'Ветер', 'literatureB')">Туман</button>
                             </div>
                             <div class="result" id="literatureB-result"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card" data-task-index="7">
+                        <h4>Задание 7: Вид сказки</h4>
+                        <p>К какому виду относится сказка, в которой описывается повседневная жизнь людей, без магии и волшебства?</p>
+                        <div class="answer-options">
+                            <button class="option-btn" onclick="checkAnswer(this, 'бытовая сказка', 'literatureC')">волшебная сказка</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'бытовая сказка', 'literatureC')">сказка о животных</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'бытовая сказка', 'literatureC')">бытовая сказка</button>
+                        </div>
+                        <div class="result" id="literatureC-result"></div>
+                    </div>
+                    
+                    <div class="task-card" data-task-index="8">
+                        <h4>Задание 8: Определи жанр</h4>
+                        <p>Прочитай отрывок и определи, к какому литературному жанру он относится.</p>
+                        <div class="text-passage">
+                            <p><em>«Когда в товарищах согласья нет,<br>
+                            На лад их дело не пойдёт,<br>
+                            И выйдет из него не дело, только мука.»</em></p>
+                        </div>
+                        <p><strong>Вопрос:</strong> К какому литературному жанру относится данный отрывок?</p>
+                        <div class="answer-options">
+                            <button class="option-btn" onclick="checkAnswer(this, 'басня', 'literatureD')">былина</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'басня', 'literatureD')">басня</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'басня', 'literatureD')">загадка</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 'басня', 'literatureD')">потешка</button>
+                        </div>
+                        <div class="result" id="literatureD-result"></div>
+                    </div>
+                    
+                    <div class="task-card" data-task-index="9">
+                        <h4>Задание 9: Тематические разделы библиотеки</h4>
+                        <p>Рассмотри рисунок. Буквами обозначены тематические разделы библиотеки, цифрами — книги.</p>
+                        <div class="text-passage image-passage">
+                            <img src="Images/12.png" alt="Тематические разделы библиотеки и книги" class="task-image">
+                        </div>
+                        <p>В какой раздел следует поставить каждую книгу? Выбери номер книги для каждого раздела.</p>
+                        
+                        <div class="question-block">
+                            <p><strong>Раздел А:</strong> Справочная литература</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, '2', 'literatureE')">1</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '2', 'literatureE')">2</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '2', 'literatureE')">3</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '2', 'literatureE')">4</button>
+                            </div>
+                            <div class="result" id="literatureE-result"></div>
+                        </div>
+                        
+                        <div class="question-block">
+                            <p><strong>Раздел Б:</strong> Литературные сказки</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, '4', 'literatureF')">1</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '4', 'literatureF')">2</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '4', 'literatureF')">3</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '4', 'literatureF')">4</button>
+                            </div>
+                            <div class="result" id="literatureF-result"></div>
+                        </div>
+                        
+                        <div class="question-block">
+                            <p><strong>Раздел В:</strong> Устное народное творчество</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, '1', 'literatureG')">1</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '1', 'literatureG')">2</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '1', 'literatureG')">3</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '1', 'literatureG')">4</button>
+                            </div>
+                            <div class="result" id="literatureG-result"></div>
+                        </div>
+                        
+                        <div class="question-block">
+                            <p><strong>Раздел Г:</strong> Рассказы о природе</p>
+                            <div class="answer-options">
+                                <button class="option-btn" onclick="checkAnswer(this, '3', 'literatureH')">1</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '3', 'literatureH')">2</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '3', 'literatureH')">3</button>
+                                <button class="option-btn" onclick="checkAnswer(this, '3', 'literatureH')">4</button>
+                            </div>
+                            <div class="result" id="literatureH-result"></div>
                         </div>
                     </div>
                 </div>

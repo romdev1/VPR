@@ -10,6 +10,11 @@ let lastUnlockedLiteratureTask = 1;
 // Для задания 3: оба ответа должны быть верными
 let literature2Correct = false;
 let literature3Correct = false;
+// Для задания 9: четыре подпункта (А, Б, В, Г)
+let literatureECorrect = false;
+let literatureFCorrect = false;
+let literatureGCorrect = false;
+let literatureHCorrect = false;
 // Ответы в заданиях на соответствие по номерам заданий (2 и 5)
 let matchingAnswersByTask = { 2: {}, 5: {} };
 
@@ -192,15 +197,15 @@ function applySequentialTasks() {
             card.classList.add('task-locked');
         }
     });
-    // Обновляем счётчик «Задание N из 6»
+    // Обновляем счётчик «Задание N из 9»
     const counterEl = document.getElementById('literature-task-counter');
-    if (counterEl) counterEl.textContent = 'Задание ' + lastUnlockedLiteratureTask + ' из 6';
+    if (counterEl) counterEl.textContent = 'Задание ' + lastUnlockedLiteratureTask + ' из 9';
 }
 
 // Разблокировать следующее задание после правильного решения текущего
 function unlockNextLiteratureTask(taskIndex) {
     const num = parseInt(taskIndex, 10);
-    if (num >= 1 && num <= 6 && num > lastUnlockedLiteratureTask) {
+    if (num >= 1 && num <= 9 && num > lastUnlockedLiteratureTask) {
         lastUnlockedLiteratureTask = num;
         saveProgress();
         applySequentialTasks();
@@ -326,6 +331,18 @@ function checkAnswer(button, correctAnswer, subject) {
             literature2Progress += 50;
         } else if (subject === 'literature3') {
             literature3Progress += 50;
+        } else if (
+            subject === 'literatureA' ||
+            subject === 'literatureB' ||
+            subject === 'literatureC' ||
+            subject === 'literatureD' ||
+            subject === 'literatureE' ||
+            subject === 'literatureF' ||
+            subject === 'literatureG' ||
+            subject === 'literatureH'
+        ) {
+            // Дополнительные задания по литературе учитываем в общем прогрессе
+            literatureProgress += 25;
         }
     }
     
@@ -342,14 +359,30 @@ function checkAnswer(button, correctAnswer, subject) {
         } else if (subject === 'literatureA') {
             unlockNextLiteratureTask(5);  // решили задание 4 — открываем задание 5
         } else if (subject === 'literatureB') {
-            unlockNextLiteratureTask(6);  // решили задание 6 — помечаем последнее открытым
-            showCongratulationsScreen(); // все 6 заданий выполнены
+            unlockNextLiteratureTask(7);  // решили задание 6 — открываем задание 7
+        } else if (subject === 'literatureC') {
+            unlockNextLiteratureTask(8);  // решили задание 7 — открываем задание 8
+        } else if (subject === 'literatureD') {
+            unlockNextLiteratureTask(9);  // решили задание 8 — открываем задание 9
+        } else if (subject === 'literatureE') {
+            literatureECorrect = true;
+        } else if (subject === 'literatureF') {
+            literatureFCorrect = true;
+        } else if (subject === 'literatureG') {
+            literatureGCorrect = true;
+        } else if (subject === 'literatureH') {
+            literatureHCorrect = true;
         } else if (subject === 'literature2') {
             literature2Correct = true;
             if (literature3Correct) unlockNextLiteratureTask(4);  // оба ответа в задании 3 — открываем 4
         } else if (subject === 'literature3') {
             literature3Correct = true;
             if (literature2Correct) unlockNextLiteratureTask(4);
+        }
+
+        // Если все подпункты задания 9 решены верно — показываем экран поздравления
+        if (literatureECorrect && literatureFCorrect && literatureGCorrect && literatureHCorrect) {
+            showCongratulationsScreen();
         }
     }
     
